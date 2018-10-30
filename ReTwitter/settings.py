@@ -25,7 +25,7 @@ SECRET_KEY = '*z1qw7yr8@9w^e9f1k2of*r(ve2vsyucb(=tq0q3+&)9s8)+1q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['retwitter-django.herokuapp.com']
 
 
 # Application definition
