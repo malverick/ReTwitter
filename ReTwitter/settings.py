@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'ReTwitter.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-	'default': dj_database_url.config(default=config('DATABASE_URL'))
+	'default': dj_database_url.config(default='postgres://dlbwkdjgylsrhj:1f40907809484870f25adbbecd3e9252652ea00884bd58acf22e6a5afa15e26c@ec2-54-243-31-34.compute-1.amazonaws.com:5432/dfdm5rlau10ts0')
 }
 
 
