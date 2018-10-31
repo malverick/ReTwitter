@@ -1,8 +1,9 @@
-from django.conf.urls import url, include
-from accounts import views
-from django.views.decorators.csrf import csrf_exempt
+from django.conf.urls import url
+from accounts import views as local_views
+
 urlpatterns = [
-    url(r'^signup/', views.signup),
-    url(r'^login/$', views.Login_user),
-    url(r'^logout/$', views.Logout),
+	# Session login
+    url(r'^signup/$', local_views.signup),
+    url(r'^login/$', local_views.login_user),
+    url(r'^logout/$', local_views.logout),
 ]
