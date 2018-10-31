@@ -1,22 +1,38 @@
 To run this app locally
 
 1. Install Python2.7 : https://www.python.org/downloads/
-2. Install pip for python
-    $sudo apt-get update
-    $sudo apt-get install python-pip
+
+2. Install pip for python:
+    
+    `$sudo apt-get update`
+    
+    `$sudo apt-get install python-pip`
+
 3. Install Virtual Environment
-    $sudo pip install virtualenv
+
+    `$sudo pip install virtualenv`
+
 4. Extract the Zip Folder
-    $cd ReTwitter
+
+    `$cd ReTwitter`
+
 5. Create Virtual Environment
-    $virtualenv venv
+
+    `$virtualenv venv`
+
 6. Activate the Virtual Environment
-    $source venv/bin/activate
-    $pip install -r requirements.txt
-    $python manage.py makemigrations
-    $python manage.py migrate
-    $python manage.py runserver
-Server will start -  127.0.0.1:8000
+
+    `$source venv/bin/activate`
+
+    `$pip install -r requirements.txt`
+
+    `$python manage.py makemigrations`
+
+    `$python manage.py migrate`
+
+    `$python manage.py runserver`
+
+Server will start at  http://127.0.0.1:8000
 
 Test this API on POSTMAN
 
@@ -124,6 +140,6 @@ Method: POST
 Request Body Type: RAW, JSON(application/json)
 
 Request Body: `{"username":"<username>", "tweetID":"<tweet id>"}`
-    
+
 Description: Accepts 2 parameters, username of the person whose tweet is to be read and tweetID representing the tweet of the corresponding username. If the tweetID field is left empty, then display all the tweets created by the corresponding username.
 Return JsonResponse mentioning the required tweet(s).
