@@ -12,9 +12,20 @@ from django.contrib.auth import views as auth_views
 from django.views.decorators.csrf import csrf_exempt
 import json
 from models import Follows, Tweets
+from django.views.decorators.csrf import csrf_protect
 # Create your views here.
 
-@csrf_exempt
+
+# from rest_framework.authentication import SessionAuthentication, BasicAuthentication 
+
+# class CsrfExemptSessionAuthentication(SessionAuthentication):
+
+#     def enforce_csrf(self, request):
+#         return  # To not perform the csrf check previously happening
+
+
+
+@api_view(['POST'])      
 def follow(request):
     """
     This method is used to follow a particular user.
@@ -22,6 +33,12 @@ def follow(request):
     'request.body' contains username of person in JSON format
     who is to be followed.
     """
+    # if request.user.is_authenticated():
+    #     print "Helppppp"
+    # else:
+    #     print "yoyoyoy"
+    #authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
+
     if request.method == 'POST':
         if str(request.user) == "AnonymousUser":
             return JsonResponse({"Error":"Login First"})

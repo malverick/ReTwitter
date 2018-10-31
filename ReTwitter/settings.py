@@ -26,7 +26,7 @@ SECRET_KEY = '*z1qw7yr8@9w^e9f1k2of*r(ve2vsyucb(=tq0q3+&)9s8)+1q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['retwitter-django.herokuapp.com']
+ALLOWED_HOSTS = ['retwitter-django.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -46,9 +46,9 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
