@@ -42,7 +42,7 @@ Prerequisites: Make sure under Authorization “No Auth” is selected.
 
 Under “Headers” add the Header key: Content-Type. Make the Header value: application/json
 
-Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token <token key>” (without the quotes).
+Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token `token key`” (without the quotes).
 
 Description: Deletes the token key generated for this user. A new token key will be generated when the same user will login again.
 
