@@ -1,145 +1,142 @@
-To run this app locally
+Hello folks !
 
-1. Install Python2.7 : https://www.python.org/downloads/
+Recently I started learning Django and tried to implement this project side by side. In this project, I have implemented user login/signup using django rest framework. Then I have implemented some APIs with functionality similar to twitter features like, follow/unfollow a user, create, read and delete a tweet.
 
-2. Install pip for python:
-    
-    `$sudo apt-get update`
-    
-    `$sudo apt-get install python-pip`
+I have deployed this project on Heroku which was also a new experience for me. You can test this project on POSTMAN. Follow the instructions below. Hope you like it.
 
-3. Install Virtual Environment
+Heroku Link - https://retwitter-django.herokuapp.com (You will get a 404 error page on opeining this because I have not implemented any UI. Kindly follow below instructions for the correct URL of each API)
 
-    `$sudo pip install virtualenv`
+Test this API on POSTMAN because you need to provide the authorization token while accessing the API which is not possible on browser.
 
-4. Extract the Zip Folder
-
-    `$cd ReTwitter`
-
-5. Create Virtual Environment
-
-    `$virtualenv venv`
-
-6. Activate the Virtual Environment
-
-    `$source venv/bin/activate`
-
-    `$pip install -r requirements.txt`
-
-    `$python manage.py makemigrations`
-
-    `$python manage.py migrate`
-
-    `$python manage.py runserver`
-
-Server will start at  http://127.0.0.1:8000
-
-Test this API on POSTMAN
-
-APP NAME: ACCOUNTS
+Following is the list of APIs implemented.
 
 1. Signup
 
-Url: http://127.0.0.1:8000/accounts/signup/
+Url: https://retwitter-django.herokuapp.com/accounts/signup/
 
 Method: POST
 
-Request Body Type: RAW, JSON(application/json)
-
-Request Body: `{"username":"<username>", "password":"<password>"}`
+Request Body: "username":"<username>", "password":"<password>"
 
 Description: Accepts 2 parameters, username and password. 
-If username is unique, registers him in database and logs in the user. Returns JsonResponse, `"Note":"User successfully logged in"`.
-If username is not unique, Returns JsonResponse, `"Note":"User already exist"`.
+Checks for the uniqueness of the user, registers him in database and logs in the user. Returns the token key generated specific to this user. You have to provide this token key to access other APIs. This will make sure that only logged in user is able to make changes to database corresponding to his account.
 
 2. Login
 
-Url: http://127.0.0.1:8000/accounts/login/
+Url: https://retwitter-django.herokuapp.com/accounts/login/
 
 Method: POST
 
-Request Body Type: RAW, JSON(application/json)
-
-Request Body: `{"username":"<username>", "password":"<password>"}`
+Request Body: "username":"<username>", "password":"<password>"
 
 Description: Accepts 2 parameters, username and password. Checks whether the user exists or not.
-If the user exists, authenticates the user, do the log in and returns JsonResponse, `"Note":"User successfully logged in"`.
-If the user does not exist or password is incorrect, returns JsonResponse, `"Error":"Invalid username or password"`.
+If the user exists, authenticates the user, generates the token and returns the token key generated specific to this user. You have to provide this token key to access other APIs. This will make sure that only logged in user is able to make changes to database corresponding to his account.
 
 3. Logout
 
-Url: http://127.0.0.1:8000/accounts/logout/
-
-Method: GET
-
-Description: Logs out the user and returns JsonResponse, `"Note":"Successfully logged out" `
-
-APP NAME: EXTENDED
-
-1. Follow
-
-Url: http://127.0.0.1:8000/extended/follow/
+Url: https://retwitter-django.herokuapp.com/accounts/logout/
 
 Method: POST
 
-Request Body Type: RAW, JSON(application/json)
+Prerequisites: Make sure under Authorization “No Auth” is selected.
 
-Request Body: `{"username":"<username>", "password":"<password>"}`
+Under “Headers” add the Header key: Content-Type. Make the Header value: application/json
+
+Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token <token key>” (without the quotes).
+
+Description: Deletes the token key generated for this user. A new token key will be generated when the same user will login again.
+
+
+4. Follow
+
+Url: https://retwitter-django.herokuapp.com/extended/follow/
+
+Method: POST
+
+Request Body: "follow":"<username>"
+
+Prerequisites: Make sure under Authorization “No Auth” is selected.
+
+Under “Headers” add the Header key: Content-Type. Make the Header value: application/json
+
+Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token <token key>” (without the quotes).
+
+Description: Accepts 1 parameter, follow which contains the username of the person to be followed. Follows the user with the username provided in the request body. A user cannot follow himself.
 
 2. Unfollow
 
-Url: http://127.0.0.1:8000/extended/unfollow/
+Url: https://retwitter-django.herokuapp.com/extended/unfollow/
 
 Method: POST
 
-Request Body Type: RAW, JSON(application/json)
+Request Body: "unfollow":"<username>"
 
-Request Body: `{"unfollow":"<username>"}`
+Prerequisites: Make sure under Authorization “No Auth” is selected.
 
-Description: Accepts 1 parameter, unfollow which contains the username of the person to be unfollowed.
-Returns JsonResponse mentioning the username of logged in user and username of person whom he just stopped following.
+Under “Headers” add the Header key: Content-Type. Make the Header value: application/json
+
+Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token <token key>” (without the quotes).
+
+Description: Accepts 1 parameter, unfollow which contains the username of the person to be unfollowed. Unfollows the user with the username provided.
 
 3. GetUsers
 
-Url: http://127.0.0.1:8000/extended/getUsers/
+Url: https://retwitter-django.herokuapp.com/extended/getUsers/
 
 Method: GET
 
-Description: Return a JsonResponse displaying the list of all the users in the database along with their user ID.
+Prerequisites: Make sure under Authorization “No Auth” is selected.
+
+Under “Headers” add the Header key: Content-Type. Make the Header value: application/json
+
+Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token <token key>” (without the quotes).
+
+Description: Displays the list of all the registered users in JSON format.
 
 4. CreateTweet
 
-Url: http://127.0.0.1:8000/extended/create/
+Url: https://retwitter-django.herokuapp.com/extended/create/
 
 Method: POST
 
-Request Body Type: RAW, JSON(application/json)
+Request Body: "tweet":"<content of the tweet>"
 
-Request Body: `{"tweet":"<tweet content>"}`
+Prerequisites: Make sure under Authorization “No Auth” is selected.
 
-Description: Accepts 1 parameter, tweet which contains the content of the tweet. Store the content of tweet in the database corresponding to the logged in user. Return the JsonResponse mentioning the TweetId of the tweet which is just created.
+Under “Headers” add the Header key: Content-Type. Make the Header value: application/json
+
+Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token <token key>” (without the quotes).
+
+Description: Accepts 1 parameter, tweet which contains the content of the tweet. Store the content of tweet in the database corresponding to the logged in user. Return the tweetID of the tweet just created.
 
 5. DeleteTweet
 
-Url: http://127.0.0.1:8000/extended/delete/
+Url: https://retwitter-django.herokuapp.com/extended/delete/
 
 Method: POST
 
-Request Body Type: RAW, JSON(application/json)
+Request Body: {"tweetID":"<tweet id>"}
 
-Request Body: `{"tweetID":"<tweet id>"}`
+Prerequisites: Make sure under Authorization “No Auth” is selected.
+
+Under “Headers” add the Header key: Content-Type. Make the Header value: application/json
+
+Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token <token key>” (without the quotes).
 
 Description: Accepts 1 parameter, tweetID representing the tweet which is to be deleted. Also, checks the basic corner cases like whether tweet exits or not, user is authorised to delete tweet, etc.
 
 6. ReadTweet
 
-Url: http://127.0.0.1:8000/extended/read/
+Url: https://retwitter-django.herokuapp.com/extended/read/
 
 Method: POST
 
-Request Body Type: RAW, JSON(application/json)
+Request Body: "username":"<username>", "tweetID":"<tweet id>"
 
-Request Body: `{"username":"<username>", "tweetID":"<tweet id>"}`
+Prerequisites: Make sure under Authorization “No Auth” is selected.
 
-Description: Accepts 2 parameters, username of the person whose tweet is to be read and tweetID representing the tweet of the corresponding username. If the tweetID field is left empty, then display all the tweets created by the corresponding username.
-Return JsonResponse mentioning the required tweet(s).
+Under “Headers” add the Header key: Content-Type. Make the Header value: application/json
+
+Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token <token key>” (without the quotes).
+
+Description: Accepts 2 parameters, username of the person whose tweet is to be read and tweetID representing the tweet of the corresponding username. If username is not provided or field is left empty then by default it assumes the logged in user. If the tweetID is not provided or field is left empty, then by default it displays all the tweets created by the corresponding username.
