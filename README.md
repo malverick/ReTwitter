@@ -59,7 +59,7 @@ Prerequisites: Make sure under Authorization “No Auth” is selected.
 
 Under “Headers” add the Header key: Content-Type. Make the Header value: application/json
 
-Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token <token key>” (without the quotes).
+Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token `token key`” (without the quotes).
 
 Description: Accepts 1 parameter, follow which contains the username of the person to be followed. Follows the user with the username provided in the request body. A user cannot follow himself.
 
@@ -75,7 +75,7 @@ Prerequisites: Make sure under Authorization “No Auth” is selected.
 
 Under “Headers” add the Header key: Content-Type. Make the Header value: application/json
 
-Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token <token key>” (without the quotes).
+Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token `token key`” (without the quotes).
 
 Description: Accepts 1 parameter, unfollow which contains the username of the person to be unfollowed. Unfollows the user with the username provided.
 
@@ -89,7 +89,7 @@ Prerequisites: Make sure under Authorization “No Auth” is selected.
 
 Under “Headers” add the Header key: Content-Type. Make the Header value: application/json
 
-Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token <token key>” (without the quotes).
+Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token `token key`” (without the quotes).
 
 Description: Displays the list of all the registered users in JSON format.
 
@@ -105,7 +105,7 @@ Prerequisites: Make sure under Authorization “No Auth” is selected.
 
 Under “Headers” add the Header key: Content-Type. Make the Header value: application/json
 
-Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token <token key>” (without the quotes).
+Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token `token key`” (without the quotes).
 
 Description: Accepts 1 parameter, tweet which contains the content of the tweet. Store the content of tweet in the database corresponding to the logged in user. Return the tweetID of the tweet just created.
 
@@ -121,7 +121,7 @@ Prerequisites: Make sure under Authorization “No Auth” is selected.
 
 Under “Headers” add the Header key: Content-Type. Make the Header value: application/json
 
-Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token <token key>” (without the quotes).
+Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token `token key`” (without the quotes).
 
 Description: Accepts 1 parameter, tweetID representing the tweet which is to be deleted. Also, checks the basic corner cases like whether tweet exits or not, user is authorised to delete tweet, etc.
 
@@ -137,6 +137,6 @@ Prerequisites: Make sure under Authorization “No Auth” is selected.
 
 Under “Headers” add the Header key: Content-Type. Make the Header value: application/json
 
-Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token <token key>” (without the quotes).
+Now, under “Headers” underneath “Content-Type” add the Header key: Authorization and add the Header value: “Token `token key`” (without the quotes).
 
 Description: Accepts 2 parameters, username of the person whose tweet is to be read and tweetID representing the tweet of the corresponding username. If username is not provided or field is left empty then by default it assumes the logged in user. If the tweetID is not provided or field is left empty, then by default it displays all the tweets created by the corresponding username.
