@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*z1qw7yr8@9w^e9f1k2of*r(ve2vsyucb(=tq0q3+&)9s8)+1q'
+SECRET_KEY = 'SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'ReTwitter.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-	'default': dj_database_url.config(default='postgres://dlbwkdjgylsrhj:1f40907809484870f25adbbecd3e9252652ea00884bd58acf22e6a5afa15e26c@ec2-54-243-31-34.compute-1.amazonaws.com:5432/dfdm5rlau10ts0')
+	'default': dj_database_url.config(default='DATABASE_URL')
 }
 
 
