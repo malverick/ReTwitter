@@ -16,7 +16,7 @@ Url: https://retwitter-django.herokuapp.com/accounts/signup/
 
 Method: POST
 
-Request Body: "username":"<username>", "password":"<password>"
+Request Body: "username":"`username`", "password":"`password`"
 
 Description: Accepts 2 parameters, username and password. 
 Checks for the uniqueness of the user, registers him in database and logs in the user. Returns the token key generated specific to this user. You have to provide this token key to access other APIs. This will make sure that only logged in user is able to make changes to database corresponding to his account.
@@ -27,7 +27,7 @@ Url: https://retwitter-django.herokuapp.com/accounts/login/
 
 Method: POST
 
-Request Body: "username":"<username>", "password":"<password>"
+Request Body: "username":"`username`", "password":"`password`"
 
 Description: Accepts 2 parameters, username and password. Checks whether the user exists or not.
 If the user exists, authenticates the user, generates the token and returns the token key generated specific to this user. You have to provide this token key to access other APIs. This will make sure that only logged in user is able to make changes to database corresponding to his account.
@@ -53,7 +53,7 @@ Url: https://retwitter-django.herokuapp.com/extended/follow/
 
 Method: POST
 
-Request Body: "follow":"<username>"
+Request Body: "follow":"`username`"
 
 Prerequisites: Make sure under Authorization “No Auth” is selected.
 
@@ -69,7 +69,7 @@ Url: https://retwitter-django.herokuapp.com/extended/unfollow/
 
 Method: POST
 
-Request Body: "unfollow":"<username>"
+Request Body: "unfollow":"`username`"
 
 Prerequisites: Make sure under Authorization “No Auth” is selected.
 
@@ -99,7 +99,7 @@ Url: https://retwitter-django.herokuapp.com/extended/create/
 
 Method: POST
 
-Request Body: "tweet":"<content of the tweet>"
+Request Body: "tweet":"`content of the tweet`"
 
 Prerequisites: Make sure under Authorization “No Auth” is selected.
 
@@ -115,7 +115,7 @@ Url: https://retwitter-django.herokuapp.com/extended/delete/
 
 Method: POST
 
-Request Body: {"tweetID":"<tweet id>"}
+Request Body: {"tweetID":"`tweet id`"}
 
 Prerequisites: Make sure under Authorization “No Auth” is selected.
 
@@ -131,7 +131,7 @@ Url: https://retwitter-django.herokuapp.com/extended/read/
 
 Method: POST
 
-Request Body: "username":"<username>", "tweetID":"<tweet id>"
+Request Body: "username":"`username`", "tweetID":"`tweet id`"
 
 Prerequisites: Make sure under Authorization “No Auth” is selected.
 
